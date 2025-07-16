@@ -1,49 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <!-- 
-      This is an HTML comment
-      You can write text in a comment and the content won't be visible in the page
-    -->
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ลองกดดูสิ๊</title>
+  <style>
+    body {
+      background-color: #ffe6f0;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: sans-serif;
+    }
 
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="https://glitch.com/favicon.ico" />
+    a {
+      text-decoration: none;
+    }
 
-    <!--
-      This is the page head - it contains info the browser uses
-      Like the title, which appears on the browser tab but not inside the page
-      Further down you'll see the content that displays in the page
-    -->
-    <title>404!</title>
+    button {
+      background-color: #ff99cc;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 18px;
+      border-radius: 20px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: background-color 0.3s ease;
+    }
 
-    <!-- The website stylesheet -->
-    <link rel="stylesheet" href="/style.css" />
-
-    <!-- The website JavaScript file -->
-    <script src="/script.js" defer></script>
-  </head>
-  <body>
-    <!--
-      The body includes the content you see in the page
-      Each element is defined using tags, like this <div></div>
-      The attributes like class="wrapper" let us style elements in the CSS
-    -->
-    <div class="wrapper">
-      <div class="content" role="main">
-        <h1 class="title">404 Not Found 😭</h1>
-        <img
-          src="/cool-website.svg"
-          class="illustration-404"
-          alt="not so cool website"
-        />
-        <div class="instructions">
-          <p>
-            WELP this page couldn't be found – <a href="/">go to the homepage</a>
-          </p>
-
-        </div>
-      </div>
-    </div>
-  </body>
+    button:hover {
+      background-color: #ff66b2;
+    }
+  </style>
+</head>
+<body>
+  <a href="h2.html">
+    <button>กดตรงนี้</button>
+  </a>
+</body>
 </html>
