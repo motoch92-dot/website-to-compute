@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lightning Buddha Tee</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #0a0a0a;
+      color: #fff;
+    }
+
+    header {
+      padding: 20px;
+      text-align: center;
+      font-size: 26px;
+      font-weight: bold;
+      background: linear-gradient(90deg, #000, #111);
+      letter-spacing: 3px;
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      gap: 30px;
+      text-align: center;
+    }
+
+    .hero img {
+      width: 320px;
+      border-radius: 15px;
+      box-shadow: 0 0 30px rgba(0, 217, 255, 0.3);
+    }
+
+    .info {
+      max-width: 400px;
+    }
+
+    .info h1 {
+      font-size: 34px;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-size: 30px;
+      color: #00d9ff;
+      margin: 15px 0;
+    }
+
+    .sizes button {
+      margin: 5px;
+      padding: 10px 15px;
+      border: 1px solid #00d9ff;
+      background: transparent;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+
+    .sizes button.active {
+      background: #00d9ff;
+      color: #000;
+    }
+
+    .buy-btn {
+      margin-top: 15px;
+      padding: 14px 25px;
+      border: none;
+      background: #00d9ff;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+
+    .buy-btn:hover {
+      background: #00aacc;
+      transform: scale(1.05);
+    }
+
+    .gallery {
+      display: flex;
+      justify-content: center; /* จัดกลางแนวนอน */
+      align-items: center;
+      gap: 20px;
+      overflow-x: auto;
+      padding: 20px;
+    }
+
+    .gallery img {
+      height: 220px;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.1);
+    }
+
+    .cart {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #111;
+      padding: 10px 15px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #aaa;
+      font-size: 14px;
+    }
+
+  </style>
+</head>
+<body>
+
+<header>
+⚡ LIGHTNING BUDDHA ⚡
+</header>
+
+<div class="cart">
+🛒 ตะกร้า: <span id="cartCount">0</span>
+</div>
+
+<section class="hero">
+  <div style="position:relative; width:320px; overflow:hidden; border-radius:15px;">
+    <div id="slider" style="display:flex; transition:0.5s;">
+      <img src="676284849_1343861097627749_8189844527985426076_n.png" style="width:320px;">
+      <img src="0602e0e4-50de-4719-aa06-f02227606a2e.jpg" style="width:320px;">
+      <img src="995f64e0-f0eb-411f-bcfd-277f4f26fc00.jpg" style="width:320px;">
+      <img src="dca22de0-d42d-4915-926f-7f004ff3ac23 (1).jpg" style="width:320px;">
+      <img src="2fe85d0a-49f0-4ad6-9949-9dfa386b350d.jpg" style="width:320px;">
+    </div>
+
+    <button onclick="prevSlide()" style="position:absolute; left:5px; top:50%; transform:translateY(-50%);">◀</button>
+    <button onclick="nextSlide()" style="position:absolute; right:5px; top:50%; transform:translateY(-50%);">▶</button>
+  </div>
+
+  <div class="info">
+    <h1>เสื้อสายฟ้าเทพ</h1>
+    <p>สายธรรม + สายร็อค + สายปั่น ครบจบตัวเดียว</p>
+
+    <div class="price">฿29,999</div>
+
+    <div class="sizes">
+      <p>เลือกไซส์:</p>
+      <button onclick="selectSize(this)">S</button>
+      <button onclick="selectSize(this)">M</button>
+      <button onclick="selectSize(this)">L</button>
+      <button onclick="selectSize(this)">XL</button>
+    </div>
+
+    <button class="buy-btn" onclick="addToCart()">เพิ่มลงตะกร้า</button>
+  </div>
+</section>
+
+<section>
+  <h2 style="text-align:center">นายแบบระดับโลก</h2>
+  <div class="gallery">
+    <img src="659996213_1194979749211445_1430909933549535066_n.jpg">
+    <img src="662399978_1870545880220688_9002455191188437693_n.jpg">
+    <img src="677193192_1143876201198665_5125265200244001753_n.png">
+  </div>
+</section>
+
+
+<script>
+let cart = 0;
+let selectedSize = null;
+
+function selectSize(btn) {
+  document.querySelectorAll('.sizes button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  selectedSize = btn.innerText;
+}
+
+function addToCart() {
+  if (!selectedSize) {
+    alert('เลือกไซส์ก่อน!');
+    return;
+  }
+  cart++;
+  document.getElementById('cartCount').innerText = cart;
+  alert('เพิ่มลงตะกร้าแล้ว!');
+}
+
+// slider
+let index = 0;
+function nextSlide(){
+  const slider = document.getElementById('slider');
+  index = (index + 1) % 2;
+  slider.style.transform = `translateX(-${index * 320}px)`;
+}
+
+function prevSlide(){
+  const slider = document.getElementById('slider');
+  index = (index - 1 + 2) % 2;
+  slider.style.transform = `translateX(-${index * 320}px)`;
+}
+
+let totalSlides = 5;
+
+function nextSlide(){
+  const slider = document.getElementById('slider');
+  index = (index + 1) % totalSlides;
+  slider.style.transform = `translateX(-${index * 320}px)`;
+}
+
+function prevSlide(){
+  const slider = document.getElementById('slider');
+  index = (index - 1 + totalSlides) % totalSlides;
+  slider.style.transform = `translateX(-${index * 320}px)`;
+}
+
+</script>
+
+</body>
+</html>
